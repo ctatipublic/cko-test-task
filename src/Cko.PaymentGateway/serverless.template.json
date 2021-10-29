@@ -1,0 +1,82 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Description": "Cko Payment Gateway function.",
+  "Parameters": {},
+  "Conditions": {},
+  "Resources": {
+    "DynamoDB": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "transactionKey",
+            "AttributeType": "S"
+          }
+        ],
+        "TableName": "CkoTransactions",
+        "KeySchema": [
+          {
+            "AttributeName": "transactionKey",
+            "KeyType": "HASH"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST"
+      }
+    },
+    "CkoPaymentGatewayFunction": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "FunctionName": "cko-paymentgateway-function",
+        "Handler": "Cko.PaymentGateway::Cko.PaymentGateway.LambdaEntryPoint::FunctionHandlerAsync",
+        "Runtime": "dotnetcore3.1",
+        "CodeUri": "",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambda_FullAccess",
+          {
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "dynamodb:*"
+                ],
+                "Resource": {
+                  "Fn::GetAtt": [
+                    "DynamoDB",
+                    "Arn"
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "Events": {
+          "ProxyResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/{proxy+}",
+              "Method": "ANY"
+            }
+          },
+          "RootResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/",
+              "Method": "ANY"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "ApiURL": {
+      "Description": "API endpoint URL for Prod environment",
+      "Value": {
+        "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+      }
+    }
+  }
+}
