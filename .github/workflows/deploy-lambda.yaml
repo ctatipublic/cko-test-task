@@ -5,13 +5,16 @@ on:
 jobs:
   build-and-deploy-to-lambda:
     runs-on: ubuntu-latest
-    container:
-      image: christostat/cyberdisco-deployment:focal-node14-dotnetcore31-terraform-sam-aws
-      env:
-        AWS_DEPLOY_ACCESS_KEY: ${{secrets.AWS_DEPLOY_ACCESS_KEY}}
-        AWS_DEPLOY_ACCESS_SECRET: ${{secrets.AWS_DEPLOY_ACCESS_SECRET}}
-        AWS_DEPLOY_REGION: eu-west-2
+    env:
+      AWS_DEPLOY_ACCESS_KEY: ${{secrets.AWS_DEPLOY_ACCESS_KEY}}
+      AWS_DEPLOY_ACCESS_SECRET: ${{secrets.AWS_DEPLOY_ACCESS_SECRET}}
+      AWS_DEPLOY_REGION: eu-west-2
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+        dotnet-version: '3.1.x'
+      - name: Install dotnet lambda
+        run: dotnet tool install -g Amazon.Lambda.Tools && export PATH="$PATH:/root/.dotnet/tools"
       - name: Build & Deploy
         run: bash ./scripts/deploy-cko-bank-simulator.sh && bash ./scripts/deploy-cko-payment-gateway.sh
