@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cko.Common.Core\Cko.Common.Core.csproj" />
+    <ProjectReference Include="..\Cko.PaymentGateway.Infrastructure\Cko.PaymentGateway.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

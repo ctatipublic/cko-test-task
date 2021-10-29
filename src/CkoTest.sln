@@ -7,6 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway", "Cko.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.BankSimulator", "Cko.BankSimulator\Cko.BankSimulator.csproj", "{803F419F-1F33-4643-9548-A50676C4D2C2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.BankSimulator.Core", "Cko.BankSimulator.Core\Cko.BankSimulator.Core.csproj", "{52552C5F-DEEF-41C5-B5F8-FAB8865272FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.BankSimulator.Infrastructure", "Cko.BankSimulator.Infrastructure\Cko.BankSimulator.Infrastructure.csproj", "{40A38138-D4CC-47C8-9735-6DB6C58BAC1E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.Common.Infrastructure", "Cko.Common.Infrastructure\Cko.Common.Infrastructure.csproj", "{0FB76905-F7CB-4ABA-B924-7BD56F4B0B0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.Common.Core", "Cko.Common.Core\Cko.Common.Core.csproj", "{D76F17AE-EE45-4ED5-AABE-FA657CE11AD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.PaymentGateway.Infrastructure", "Cko.PaymentGateway.Infrastructure\Cko.PaymentGateway.Infrastructure.csproj", "{A23BF29C-1BE4-4E89-AC35-1061D1B24223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.PaymentGateway.Core", "Cko.PaymentGateway.Core\Cko.PaymentGateway.Core.csproj", "{C4B9A180-F8CB-47EB-9373-C33DD8507C92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +33,30 @@ Global
 		{803F419F-1F33-4643-9548-A50676C4D2C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{803F419F-1F33-4643-9548-A50676C4D2C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{803F419F-1F33-4643-9548-A50676C4D2C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52552C5F-DEEF-41C5-B5F8-FAB8865272FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52552C5F-DEEF-41C5-B5F8-FAB8865272FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52552C5F-DEEF-41C5-B5F8-FAB8865272FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52552C5F-DEEF-41C5-B5F8-FAB8865272FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A38138-D4CC-47C8-9735-6DB6C58BAC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A38138-D4CC-47C8-9735-6DB6C58BAC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A38138-D4CC-47C8-9735-6DB6C58BAC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A38138-D4CC-47C8-9735-6DB6C58BAC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FB76905-F7CB-4ABA-B924-7BD56F4B0B0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB76905-F7CB-4ABA-B924-7BD56F4B0B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB76905-F7CB-4ABA-B924-7BD56F4B0B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB76905-F7CB-4ABA-B924-7BD56F4B0B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76F17AE-EE45-4ED5-AABE-FA657CE11AD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76F17AE-EE45-4ED5-AABE-FA657CE11AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76F17AE-EE45-4ED5-AABE-FA657CE11AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76F17AE-EE45-4ED5-AABE-FA657CE11AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23BF29C-1BE4-4E89-AC35-1061D1B24223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23BF29C-1BE4-4E89-AC35-1061D1B24223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23BF29C-1BE4-4E89-AC35-1061D1B24223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23BF29C-1BE4-4E89-AC35-1061D1B24223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B9A180-F8CB-47EB-9373-C33DD8507C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B9A180-F8CB-47EB-9373-C33DD8507C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B9A180-F8CB-47EB-9373-C33DD8507C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B9A180-F8CB-47EB-9373-C33DD8507C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
