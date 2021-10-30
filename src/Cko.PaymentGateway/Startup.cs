@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Cko.Common.Infrastructure.Helpers;
+using Cko.PaymentGateway.Core;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +28,14 @@ namespace Cko.PaymentGateway
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services
+                .AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = Constants.JsonSerializerOptions.PropertyNameCaseInsensitive;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = Constants.JsonSerializerOptions.PropertyNamingPolicy;
+                });
+            services.AddPaymentGatewayCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

@@ -7,10 +7,20 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="6.0.3" />
+    <Content Remove="Properties\launchSettings-local.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <_WebToolingArtifacts Remove="Properties\launchSettings-local.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\launchSettings-local.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="6.0.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cko.PaymentGateway.Core\Cko.PaymentGateway.Core.csproj" />

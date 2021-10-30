@@ -67,6 +67,13 @@
               "Method": "ANY"
             }
           }
+        },
+        "Environment": {
+          "Variables": {
+            "BANK_API_URL": {
+              "Fn::ImportValue": "cko-bank-simulator-stack-ApiURL"
+            }
+          }
         }
       }
     }

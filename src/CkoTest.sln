@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.Common.Core.Tests", "Cko.Common.Core.Tests\Cko.Common.Core.Tests.csproj", "{937F02FD-BE25-422B-B3C8-FA8B4C8B3B93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.BankSimulator.Core.Tests", "Cko.BankSimulator.Core.Tests\Cko.BankSimulator.Core.Tests.csproj", "{89AE9ADC-D2CF-47DF-9C91-3F8CD3E1DED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.BankSimulator.Core.Tests", "Cko.BankSimulator.Core.Tests\Cko.BankSimulator.Core.Tests.csproj", "{89AE9ADC-D2CF-47DF-9C91-3F8CD3E1DED7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway.Core.Tests", "Cko.PaymentGateway.Core.Tests\Cko.PaymentGateway.Core.Tests.csproj", "{E692B58A-21DA-4CE8-8EA4-13BA2C8DEC9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.PaymentGateway.DynamoDbPersistance", "Cko.PaymentGateway.DynamoDbPersistance\Cko.PaymentGateway.DynamoDbPersistance.csproj", "{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{89AE9ADC-D2CF-47DF-9C91-3F8CD3E1DED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89AE9ADC-D2CF-47DF-9C91-3F8CD3E1DED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89AE9ADC-D2CF-47DF-9C91-3F8CD3E1DED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E692B58A-21DA-4CE8-8EA4-13BA2C8DEC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E692B58A-21DA-4CE8-8EA4-13BA2C8DEC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E692B58A-21DA-4CE8-8EA4-13BA2C8DEC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E692B58A-21DA-4CE8-8EA4-13BA2C8DEC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

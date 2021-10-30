@@ -12,7 +12,7 @@ namespace Cko.BankSimulator.Core.Validators
     /// </summary>
     public class FraudCardValidator : IValidator<CardDetails>
     {
-        private static string[] _fraudulentCards = new[] { "0000-0000-0000-0000" };
+        private static string[] _fraudulentCards = new[] { "0000000000000000" };
         public static class ErrorCodes
         {
             public const string InvalidCardDetails = "CARD_DETAILS";
@@ -23,7 +23,7 @@ namespace Cko.BankSimulator.Core.Validators
         {
             var result = new List<string>();
             if (value == null) { result.Add(ErrorCodes.InvalidCardDetails); }
-            else if (_fraudulentCards.Contains(value.CardNumber)) { result.Add(ErrorCodes.Fraudulent); }
+            else if (_fraudulentCards.Contains(value.CardNumber.Replace("-", ""))) { result.Add(ErrorCodes.Fraudulent); }
             return Task.FromResult(result.AsEnumerable());
         }
     }
