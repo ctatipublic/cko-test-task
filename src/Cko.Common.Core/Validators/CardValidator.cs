@@ -38,7 +38,7 @@ namespace Cko.Common.Core.Validators
                 if (!ValidateName(value.CardHoldersName)) { errors.Add(ErrorCodes.CardHoldersName); }
             }
 
-            return Task.FromResult(errors as IEnumerable<string>);
+            return Task.FromResult(errors.AsEnumerable());
         }
 
         private bool ValidateCardNumber(string cardNumber)
