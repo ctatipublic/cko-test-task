@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.BankSimulator.Core.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway.Core.Tests", "Cko.PaymentGateway.Core.Tests\Cko.PaymentGateway.Core.Tests.csproj", "{E692B58A-21DA-4CE8-8EA4-13BA2C8DEC9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.PaymentGateway.DynamoDbPersistance", "Cko.PaymentGateway.DynamoDbPersistance\Cko.PaymentGateway.DynamoDbPersistance.csproj", "{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway.DynamoDbPersistance", "Cko.PaymentGateway.DynamoDbPersistance\Cko.PaymentGateway.DynamoDbPersistance.csproj", "{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
