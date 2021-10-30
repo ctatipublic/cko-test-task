@@ -1,7 +1,8 @@
 name: run tests
 on: 
   push:
-    branches: '!main'
+    branches-ignore:
+      - main
 jobs:
   run-tests:
     runs-on: ubuntu-latest
