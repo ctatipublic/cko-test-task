@@ -7,7 +7,7 @@ namespace Cko.PaymentGateway.DynamoDbPersistance
 {
     public static partial class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDynamoDbPersistance(this IServiceCollection services)
+        public static IServiceCollection AddDynamoDbDocumentPersistance(this IServiceCollection services)
         {
             services.AddSingleton<IDynamoDbSettings>(new DynamoDbSettings(tableName: "CkoTransactions"));
             services.AddAWSService<IAmazonDynamoDB>();

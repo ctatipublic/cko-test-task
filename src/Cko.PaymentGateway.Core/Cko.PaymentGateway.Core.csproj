@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cko.Common.Core\Cko.Common.Core.csproj" />
+    <ProjectReference Include="..\Cko.PaymentGateway.DynamoDbPersistance\Cko.PaymentGateway.DynamoDbPersistance.csproj" />
     <ProjectReference Include="..\Cko.PaymentGateway.Infrastructure\Cko.PaymentGateway.Infrastructure.csproj" />
   </ItemGroup>
 
