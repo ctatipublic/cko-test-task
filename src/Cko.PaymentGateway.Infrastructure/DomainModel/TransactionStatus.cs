@@ -2,7 +2,8 @@
 {
     public enum TransactionStatus
     {
-        Failure = -1,
+        BankDenied = -2,
+        Failed = -1,
         Pending = 0,
         Success = 1
     }

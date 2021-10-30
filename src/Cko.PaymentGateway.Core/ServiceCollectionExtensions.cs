@@ -20,6 +20,7 @@ namespace Cko.PaymentGateway.Core
                     options.BaseAddress = new Uri(appSettingsService.BankApiUrl, UriKind.Absolute);
                 });
             services.AddScoped<IBankApiGateway, BankSimulatorBankApiGateway>();
+            services.AddScoped<ITransactionProcessingService, TransactionProcessingService>();
             services.AddCommonCore();
             return services;
         }
