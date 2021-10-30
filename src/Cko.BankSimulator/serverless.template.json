@@ -41,6 +41,9 @@
       "Description": "API endpoint URL for Prod environment",
       "Value": {
         "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+      },
+      "Export": {
+        "Name": "Cko-BankSimulator-Url"
       }
     }
   }
