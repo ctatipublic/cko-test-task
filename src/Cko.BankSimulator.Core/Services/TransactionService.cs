@@ -23,9 +23,11 @@ namespace Cko.BankSimulator.Core.Services
             var result = new TransactionResult
             {
                 TransactionId = _staticValuesProvider.GetGuid().ToString(),
-                FromErrorReason = await ProcessCardValidationAsync(transaction.From),
-                ToErrorReason = await ProcessCardValidationAsync(transaction.To)
+                FromErrorReasons = await ProcessCardValidationAsync(transaction.From),
+                ToErrorReasons = await ProcessCardValidationAsync(transaction.To)
             };
+
+            // TODO: Process actual transaction
 
             return result;
         }

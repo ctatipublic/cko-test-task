@@ -20,7 +20,7 @@ namespace Cko.BankSimulator.Controllers
         public async Task<IActionResult> PostTransactionAsync([FromBody] Transaction transaction)
         {
             var result = await _transactionService.ProcessTransactionAsync(transaction);
-            if (result.FromErrorReason.Any() || result.ToErrorReason.Any())
+            if (result.FromErrorReasons.Any() || result.ToErrorReasons.Any())
             {
                 Response.StatusCode = 412;
                 return new ObjectResult(result);
