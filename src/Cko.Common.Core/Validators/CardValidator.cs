@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cko.Common.Core.Validators
 {
-    public class CreditCardValidator : IValidator<CardDetails>
+    public class CardValidator : IValidator<CardDetails>
     {
         private readonly IStaticValuesProvider _staticValuesProvider;
 
@@ -21,7 +21,7 @@ namespace Cko.Common.Core.Validators
             public const string CardHoldersName = "NAME";
         }
 
-        public CreditCardValidator(IStaticValuesProvider staticValuesProvider)
+        public CardValidator(IStaticValuesProvider staticValuesProvider)
         {
             _staticValuesProvider = staticValuesProvider;
         }

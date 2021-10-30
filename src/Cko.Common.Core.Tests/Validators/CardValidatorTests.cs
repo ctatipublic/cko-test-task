@@ -26,7 +26,7 @@ namespace Cko.Common.Core.Tests.Validators
 
             // Assert
             Assert.Single(validationResult);
-            Assert.Equal(CreditCardValidator.ErrorCodes.InvalidCardDetails, validationResult.Single());
+            Assert.Equal(CardValidator.ErrorCodes.InvalidCardDetails, validationResult.Single());
         }
 
         [Theory]
@@ -49,11 +49,11 @@ namespace Cko.Common.Core.Tests.Validators
             // Assert
             if (isValid)
             {
-                Assert.True(!validationResult.Any(r => r.StartsWith(CreditCardValidator.ErrorCodes.CardNumber)));
+                Assert.True(!validationResult.Any(r => r.StartsWith(CardValidator.ErrorCodes.CardNumber)));
             }
             else
             {
-                Assert.Single(validationResult.Where(r => r.StartsWith(CreditCardValidator.ErrorCodes.CardNumber)));
+                Assert.Single(validationResult.Where(r => r.StartsWith(CardValidator.ErrorCodes.CardNumber)));
             }
 
         }
@@ -81,11 +81,11 @@ namespace Cko.Common.Core.Tests.Validators
             // Assert
             if (isValid)
             {
-                Assert.True(!validationResult.Any(r => r.Equals(CreditCardValidator.ErrorCodes.Cvv)));
+                Assert.True(!validationResult.Any(r => r.Equals(CardValidator.ErrorCodes.Cvv)));
             }
             else
             {
-                Assert.Single(validationResult.Where(r => r.Equals(CreditCardValidator.ErrorCodes.Cvv)));
+                Assert.Single(validationResult.Where(r => r.Equals(CardValidator.ErrorCodes.Cvv)));
             }
         }
 
@@ -107,11 +107,11 @@ namespace Cko.Common.Core.Tests.Validators
             // Assert
             if (isValid)
             {
-                Assert.True(!validationResult.Any(r => r.Equals(CreditCardValidator.ErrorCodes.ExpiryDate)));
+                Assert.True(!validationResult.Any(r => r.Equals(CardValidator.ErrorCodes.ExpiryDate)));
             }
             else
             {
-                Assert.Single(validationResult.Where(r => r.Equals(CreditCardValidator.ErrorCodes.ExpiryDate)));
+                Assert.Single(validationResult.Where(r => r.Equals(CardValidator.ErrorCodes.ExpiryDate)));
             }
         }
 
@@ -134,11 +134,11 @@ namespace Cko.Common.Core.Tests.Validators
             // Assert
             if (isValid)
             {
-                Assert.True(!validationResult.Any(r => r.Equals(CreditCardValidator.ErrorCodes.CardHoldersName)));
+                Assert.True(!validationResult.Any(r => r.Equals(CardValidator.ErrorCodes.CardHoldersName)));
             }
             else
             {
-                Assert.Single(validationResult.Where(r => r.Equals(CreditCardValidator.ErrorCodes.CardHoldersName)));
+                Assert.Single(validationResult.Where(r => r.Equals(CardValidator.ErrorCodes.CardHoldersName)));
             }
         }
 
@@ -148,9 +148,9 @@ namespace Cko.Common.Core.Tests.Validators
             _staticValuesProviderMock.Setup(m => m.GetUtcNow()).Returns(DateTime.SpecifyKind(new DateTime(2021, 01, 01), DateTimeKind.Utc));
         }
 
-        private CreditCardValidator GetCreditCardValidator()
+        private CardValidator GetCreditCardValidator()
         {
-            return new CreditCardValidator(_staticValuesProviderMock.Object);
+            return new CardValidator(_staticValuesProviderMock.Object);
         }
     }
 }
