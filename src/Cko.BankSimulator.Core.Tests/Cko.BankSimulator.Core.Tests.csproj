@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cko.Common.Core\Cko.Common.Core.csproj" />
+    <ProjectReference Include="..\Cko.BankSimulator.Core\Cko.BankSimulator.Core.csproj" />
+    <ProjectReference Include="..\Cko.Common.Infrastructure\Cko.Common.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
