@@ -1,4 +1,4 @@
-﻿namespace Cko.PaymentGateway.Infrastructure.Interfaces
+﻿namespace Cko.PaymentGateway.Infrastructure.Interfaces.Services
 {
     public interface IAppSettingsService
     {

@@ -1,4 +1,4 @@
-﻿using Cko.PaymentGateway.Infrastructure.Interfaces;
+﻿using Cko.PaymentGateway.Infrastructure.Interfaces.Services;
 using System;
 
 namespace Cko.PaymentGateway.Core.Services
