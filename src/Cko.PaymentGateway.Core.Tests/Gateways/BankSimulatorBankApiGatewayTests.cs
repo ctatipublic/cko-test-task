@@ -1,6 +1,7 @@
 ﻿using Cko.Common.Infrastructure.DomainModel;
 using Cko.Common.Infrastructure.Helpers;
 using Cko.PaymentGateway.Core.Gateways;
+using Cko.PaymentGateway.Core.Tests.Helpers;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
@@ -82,10 +83,11 @@ namespace Cko.PaymentGateway.Core.Tests.Gateways
             Assert.Equal(httpResponse.TransactionId, transactionResult.BankTransactionResult.TransactionId);
             Assert.Equal(httpResponse.FromErrorReasons, transactionResult.BankTransactionResult.FromErrorReasons);
             Assert.Equal(httpResponse.ToErrorReasons, transactionResult.BankTransactionResult.ToErrorReasons);
+            _loggerMock.VerifyLoggerWasCalledWithMessage(null, LogLevel.Error, 0);
         }
 
         [Fact]
-        public async Task ProcessTransactionAsync_Returns_ConnectionErrors()
+        public async Task ProcessTransactionAsync_ReturnsAndLogs_ConnectionErrors()
         {
             // Arrange
             var httpResponse = new BankTransactionResult
@@ -107,6 +109,7 @@ namespace Cko.PaymentGateway.Core.Tests.Gateways
             // Assert
             Assert.Equal(BankSimulatorBankApiGateway.ErrorCodes.ConnectionFailed, transactionResult.ConnectionError);
             Assert.Null(transactionResult.BankTransactionResult);
+            _loggerMock.VerifyLoggerWasCalledWithMessage(null, LogLevel.Error, 1);
         }
 
         private void SetupHttpClientFactory(object response, HttpStatusCode responseStatusCode, bool throwException)
