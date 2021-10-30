@@ -10,16 +10,32 @@ namespace Cko.Common.Core.Validators
 {
     public class CreditCardValidator : IValidator<CardDetails>
     {
+        private readonly IStaticValuesProvider _staticValuesProvider;
+
+        public static class ErrorCodes
+        {
+            public const string InvalidCardDetails = "CARD_DETAILS";
+            public const string CardNumber = "CARD_NUMBER";
+            public const string Cvv = "CVV";
+            public const string ExpiryDate = "EXPIRY";
+            public const string CardHoldersName = "NAME";
+        }
+
+        public CreditCardValidator(IStaticValuesProvider staticValuesProvider)
+        {
+            _staticValuesProvider = staticValuesProvider;
+        }
+
         public Task<IEnumerable<string>> ValidateAsync(CardDetails value)
         {
             var errors = new List<string>();
-            if (value == null) { errors.Add("CardDetails are null"); }
+            if (value == null) { errors.Add(ErrorCodes.InvalidCardDetails); }
             else if (!errors.Any())
             {
-                if (!ValidateCardNumber(value.CardNumber)) { errors.Add("CARD_NUMBER"); };
-                if (!ValidateCvv(value.CVV)) { errors.Add("CVV"); }
-                if (!ValidateExpiry(value.ExpiryDate)) { errors.Add("EXPIRY"); }
-                if (!ValidateName(value.CardHoldersName)) { errors.Add("NAME"); }
+                if (!ValidateCardNumber(value.CardNumber)) { errors.Add(ErrorCodes.CardNumber); };
+                if (!ValidateCvv(value.Cvv)) { errors.Add(ErrorCodes.Cvv); }
+                if (!ValidateExpiry(value.ExpiryDate)) { errors.Add(ErrorCodes.ExpiryDate); }
+                if (!ValidateName(value.CardHoldersName)) { errors.Add(ErrorCodes.CardHoldersName); }
             }
 
             return Task.FromResult(errors as IEnumerable<string>);
@@ -67,7 +83,7 @@ namespace Cko.Common.Core.Validators
         {
             if (DateTime.TryParseExact(expiryDate, "MM/yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime))
             {
-                return DateTime.SpecifyKind(dateTime, DateTimeKind.Utc) >= DateTime.UtcNow;
+                return DateTime.SpecifyKind(dateTime, DateTimeKind.Utc) <= _staticValuesProvider.GetUtcNow();
             }
             return false;
         }
