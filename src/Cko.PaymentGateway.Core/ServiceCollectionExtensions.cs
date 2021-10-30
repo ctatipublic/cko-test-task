@@ -24,7 +24,7 @@ namespace Cko.PaymentGateway.Core
                 });
             services.AddScoped<IBankApiGateway, BankSimulatorBankApiGateway>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
-            services.AddScoped<ITransactionProcessingService, TransactionProcessingService>();
+            services.AddScoped<ITransactionService, TransactionService>();
             services.AddDynamoDbDocumentPersistance();
             services.AddCommonCore();
             return services;

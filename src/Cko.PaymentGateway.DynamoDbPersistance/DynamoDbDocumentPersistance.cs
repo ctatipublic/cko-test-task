@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cko.PaymentGateway.DynamoDbPersistance
 {
-    public class DynamoDbDocumentPersistance<T> : IDocumentPersistance<T>
+    public class DynamoDbDocumentPersistance<T> : IDocumentPersistance<T> where T : class
     {
         private readonly IAmazonDynamoDB _client;
         private readonly IDynamoDbSettings _dynamoDbSettings;
@@ -23,6 +23,7 @@ namespace Cko.PaymentGateway.DynamoDbPersistance
         {
             var table = Table.LoadTable(_client, _dynamoDbSettings.TableName);
             var doc = await table.GetItemAsync(key);
+            if (doc == null) { return null; }
             return JsonSerializer.Deserialize<T>(doc.ToJson(), Constants.JsonSerializerOptions);
         }
 

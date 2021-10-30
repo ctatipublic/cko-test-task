@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 
 namespace Cko.PaymentGateway.Infrastructure.Interfaces.Services
 {
-    public interface ITransactionProcessingService
+    public interface ITransactionService
     {
         Task<PaymentGatewayTransactionResult> ProcessTransactionAsync(Transaction transaction);
+        Task<PaymentGatewayTransactionResult> RetrieveTransactionAsync(string transactionId);
     }
 }

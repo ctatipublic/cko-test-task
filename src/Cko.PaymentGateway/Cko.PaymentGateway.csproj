@@ -7,6 +7,19 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Properties\launchSettings-local.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\launchSettings-local.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\launchSettings-local.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="6.0.3" />
   </ItemGroup>
   <ItemGroup>

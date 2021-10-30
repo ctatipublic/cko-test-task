@@ -3,6 +3,7 @@ using Cko.Common.Infrastructure.Interfaces;
 using Cko.PaymentGateway.Core.Services;
 using Cko.PaymentGateway.Infrastructure.DomainModel;
 using Cko.PaymentGateway.Infrastructure.Interfaces.Gateways;
+using Cko.PaymentGateway.Infrastructure.Interfaces.Repository;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,11 @@ using Xunit;
 
 namespace Cko.PaymentGateway.Core.Tests.Services
 {
-    public class TransactionProcessingServiceTests
+    public class TransactionServiceTests
     {
         private Mock<IBankApiGateway> _bankApiGatewayMock;
         private Mock<IStaticValuesProvider> _staticValuesProviderMock;
+        private Mock<ITransactionRepository> _transactionRepositoryMock;
 
         [Fact]
         public async Task ProcessTransactionAsync_ReturnsExpectedValues_OnSuccess()
@@ -133,11 +135,13 @@ namespace Cko.PaymentGateway.Core.Tests.Services
             _staticValuesProviderMock = new Mock<IStaticValuesProvider>();
             _staticValuesProviderMock.Setup(m => m.GetUtcNow()).Returns(DateTime.SpecifyKind(new DateTime(2021, 1, 1, 00, 01, 02), DateTimeKind.Utc));
             _staticValuesProviderMock.Setup(m => m.GetGuid()).Returns(Guid.Parse("bc335580-e38d-40ca-9c89-59c017bc7a24"));
+
+            _transactionRepositoryMock = new Mock<ITransactionRepository>();
         }
 
-        private TransactionProcessingService GetService()
+        private TransactionService GetService()
         {
-            return new TransactionProcessingService(_bankApiGatewayMock.Object, _staticValuesProviderMock.Object);
+            return new TransactionService(_bankApiGatewayMock.Object, _staticValuesProviderMock.Object, _transactionRepositoryMock.Object);
         }
     }
 }
