@@ -10,14 +10,14 @@
       "Properties": {
         "AttributeDefinitions": [
           {
-            "AttributeName": "transactionKey",
+            "AttributeName": "transactionId",
             "AttributeType": "S"
           }
         ],
         "TableName": "CkoTransactions",
         "KeySchema": [
           {
-            "AttributeName": "transactionKey",
+            "AttributeName": "transactionId",
             "KeyType": "HASH"
           }
         ],
