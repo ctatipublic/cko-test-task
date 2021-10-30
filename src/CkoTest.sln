@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway.Core.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko.PaymentGateway.DynamoDbPersistance", "Cko.PaymentGateway.DynamoDbPersistance\Cko.PaymentGateway.DynamoDbPersistance.csproj", "{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko.BankSimulator.Tests", "Cko.BankSimulator.Tests\Cko.BankSimulator.Tests.csproj", "{88939995-1672-4B9A-8089-52D1C41F1E0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23CF3A43-22F1-4C72-BD8A-B04C0DDCBE07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88939995-1672-4B9A-8089-52D1C41F1E0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88939995-1672-4B9A-8089-52D1C41F1E0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88939995-1672-4B9A-8089-52D1C41F1E0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88939995-1672-4B9A-8089-52D1C41F1E0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
