@@ -56,6 +56,7 @@ namespace Cko.PaymentGateway.Core.Tests.Services
             Assert.Null(result.BankTransactionResult.ConnectionError);
             Assert.Equal(TransactionStatus.Success, result.TransactionStatus);
             Assert.Equal(TransactionStatus.Success.ToString(), result.TransactionStatusText);
+            _transactionRepositoryMock.Verify(m => m.StoreTransactionAsync(result), Times.Once());
 
         }
 
@@ -95,6 +96,7 @@ namespace Cko.PaymentGateway.Core.Tests.Services
             Assert.Null(result.BankTransactionResult.ConnectionError);
             Assert.Equal(TransactionStatus.BankDenied, result.TransactionStatus);
             Assert.Equal(TransactionStatus.BankDenied.ToString(), result.TransactionStatusText);
+            _transactionRepositoryMock.Verify(m => m.StoreTransactionAsync(result), Times.Once());
         }
 
         [Fact]
@@ -126,6 +128,48 @@ namespace Cko.PaymentGateway.Core.Tests.Services
             Assert.Equal(connectionError, result.BankTransactionResult.ConnectionError);
             Assert.Equal(TransactionStatus.Failed, result.TransactionStatus);
             Assert.Equal(TransactionStatus.Failed.ToString(), result.TransactionStatusText);
+            _transactionRepositoryMock.Verify(m => m.StoreTransactionAsync(result), Times.Once());
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public async Task RetrieveTransactionAsync_ReturnsExpectedValues(bool successfullGet)
+        {
+            // Arrange
+            SetupDefaultMocks();
+            var transactionId = "transactionid";
+            PaymentGatewayTransactionResult transactionResult = successfullGet ?
+             new PaymentGatewayTransactionResult
+             {
+                 OriginalTransaction = new Transaction
+                 {
+                     From = new CardDetails { CardNumber = "1111222233334444", Cvv = "111" },
+                     To = new CardDetails { CardNumber = "4444333322221111", Cvv = "2222" }
+                 },
+             } : null;
+
+            _transactionRepositoryMock
+                .Setup(m => m.GetTransactionAsync(transactionId))
+                .ReturnsAsync(transactionResult);
+
+            // Act
+            var service = GetService();
+            var result = await service.RetrieveTransactionAsync(transactionId);
+
+            // Assert
+            if (successfullGet)
+            {
+                Assert.Equal(transactionResult.GetHashCode(), result.GetHashCode());
+                Assert.Equal("************4444", transactionResult.OriginalTransaction.From.CardNumber);
+                Assert.Equal("***", transactionResult.OriginalTransaction.From.Cvv);
+                Assert.Equal("************1111", transactionResult.OriginalTransaction.To.CardNumber);
+                Assert.Equal("****", transactionResult.OriginalTransaction.To.Cvv);
+            }
+            else
+            {
+                Assert.Null(result);
+            }
         }
 
         private void SetupDefaultMocks()

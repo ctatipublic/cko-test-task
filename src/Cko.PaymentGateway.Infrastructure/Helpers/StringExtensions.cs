@@ -16,7 +16,7 @@ namespace Cko.PaymentGateway.Infrastructure.Helpers
                 }
                 else
                 {
-                    var original = input.Substring(result.Length - 1, input.Length - result.Length);
+                    var original = input.Substring(result.Length, input.Length - result.Length);
                     result = string.Join("", new[] { result, original });
                 }
             }
