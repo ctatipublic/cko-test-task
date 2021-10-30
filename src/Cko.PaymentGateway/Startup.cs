@@ -1,4 +1,5 @@
-﻿using Cko.PaymentGateway.Core;
+﻿using Cko.Common.Infrastructure.Helpers;
+using Cko.PaymentGateway.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,8 +32,8 @@ namespace Cko.PaymentGateway
                 .AddControllers()
                 .AddJsonOptions(options =>
                 {
-                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-                    options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = Constants.JsonSerializerOptions.PropertyNameCaseInsensitive;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = Constants.JsonSerializerOptions.PropertyNamingPolicy;
                 });
             services.AddPaymentGatewayCore();
         }

@@ -18,9 +18,9 @@ namespace Cko.BankSimulator.Core.Services
             _staticValuesProvider = staticValuesProvider;
         }
 
-        public async Task<TransactionResult> ProcessTransactionAsync(Transaction transaction)
+        public async Task<BankTransactionResult> ProcessTransactionAsync(Transaction transaction)
         {
-            var result = new TransactionResult
+            var result = new BankTransactionResult
             {
                 TransactionId = _staticValuesProvider.GetGuid().ToString(),
                 FromErrorReasons = await ProcessCardValidationAsync(transaction.From),

@@ -2,7 +2,7 @@
 
 namespace Cko.Common.Infrastructure.DomainModel
 {
-    public class TransactionResult
+    public class BankTransactionResult
     {
         public string TransactionId { get; set; }
         public IEnumerable<string> FromErrorReasons { get; set; }
