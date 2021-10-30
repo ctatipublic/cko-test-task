@@ -1,14 +1,9 @@
 using Cko.BankSimulator.Controllers;
 using Cko.BankSimulator.Infrastructure.Interfaces.Services;
 using Cko.Common.Infrastructure.DomainModel;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -88,8 +83,6 @@ namespace Cko.BankSimulator.Tests
         private TransactionController GetController()
         {
             var controller = new TransactionController(_transactionServiceMock.Object);
-            //controller.ControllerContext = new ControllerContext();
-            //controller.ControllerContext.HttpContext = new DefaultHttpContext();
             return controller;
         }
     }

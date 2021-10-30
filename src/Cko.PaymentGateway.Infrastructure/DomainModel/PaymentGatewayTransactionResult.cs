@@ -17,7 +17,7 @@ namespace Cko.PaymentGateway.Infrastructure.DomainModel
                     return TransactionStatus.Failed;
                 }
                 else if (BankTransactionResult.BankTransactionResult.FromErrorReasons.Any() ||
-                         BankTransactionResult.BankTransactionResult.FromErrorReasons.Any())
+                         BankTransactionResult.BankTransactionResult.ToErrorReasons.Any())
                 {
                     return TransactionStatus.BankDenied;
                 }

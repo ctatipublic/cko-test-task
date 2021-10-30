@@ -19,8 +19,8 @@ namespace Cko.PaymentGateway.Controllers
         public async Task<IActionResult> PostTransactionAsync([FromBody] Transaction transaction)
         {
             var transactionResult = await _transactionService.ProcessTransactionAsync(transaction);
-            Response.StatusCode = transactionResult.TransactionStatus < 0 ? 412 : 202;
-            return new ObjectResult(transactionResult);
+            var statusCode = transactionResult.TransactionStatus < 0 ? 412 : 202;
+            return new ObjectResult(transactionResult) { StatusCode = statusCode };
         }
 
         [HttpGet]
@@ -28,8 +28,8 @@ namespace Cko.PaymentGateway.Controllers
         public async Task<IActionResult> GetTransactionAsync(string transactionId)
         {
             var result = await _transactionService.RetrieveTransactionAsync(transactionId);
-            if (result == null) { return new NotFoundResult(); }
-            return new OkObjectResult(result);
+            var statusCode = result == null ? 404 : 200;
+            return new ObjectResult(result) { StatusCode = statusCode };
         }
     }
 }
