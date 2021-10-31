@@ -23,17 +23,18 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{
 	"from":{
-		"cardNumber": "5200828282828210",
+		"cardNumber": "4539564183929439367",
 		"cvv": "123",
-		"cardHoldersName": "Some dude",
+		"cardHoldersName": "Some Dude",
 		"expiryDate": "12/12"
 	},
 	"to":{
 		"cardNumber": "5200828282828210",
-		"cvv": "123",
-		"cardHoldersName": "Some dude",
+		"cvv": "234",
+		"cardHoldersName": "Some Other Dude",
 		"expiryDate": "12/12"
-	}
+	},
+	"amount": 1000.01
 }'
 ```
 
@@ -72,7 +73,7 @@ A successful response to that will have a `202 Accepted` status code, the `trans
 
 A transaction can also possibly *fail* for the following reasons:
 
-* The connection to the Bank Simulator may fail. (error code: )
+* The connection to the Bank Simulator may fail. (error code: CONNECTION_FAILED)
 * The Bank Simulator may flag a card as a fraudulent one (you can simulate that with card number 0000-0000-0000-0000) (error code: FRAUD).
 * The card number may be invalid (error code: CARD_DETAILS).
 * The CVV may be invalid (error code: CVV)
