@@ -84,6 +84,12 @@ In case of any of the above the response to the POST request will be a `412 Prec
 ### To get an existing transaction
 Make a GET request to `https://d39bxfiiqg.execute-api.eu-west-2.amazonaws.com/Prod/transaction/{transactionId}`
 
+```
+curl --request GET \
+  --url https://d39bxfiiqg.execute-api.eu-west-2.amazonaws.com/Prod/transaction/2caf07ec-9502-485d-b507-0a061a7dd192
+```
+
+
 That should return a `200 OK` response and the exact same payload as the original POST request did:
 ```
 {
@@ -129,6 +135,8 @@ As I tend to prefer to add as little logic as possible to the controllers themse
 The `.Infrastructure` projects have no dependencies and are used to define `Models` & `Interfaces` as well as the occasional static helper or extension.
 
 There is also a `Common.Core` project and a `Common.Infrastructure`, which I would use only in a monorepo, for the other projects to share functionality and definitions.
+
+The `.Test` suffix is to indicate `xUnit` test projects for each of the parent projects. 
 
 
 
