@@ -43,7 +43,11 @@ namespace Cko.PaymentGateway.Core.Tests.Services
 
             // Act
             var service = GetService();
-            var transaction = new Transaction();
+            var transaction = new Transaction
+            {
+                From = new CardDetails { CardNumber = "1111111111111111", Cvv = "111" },
+                To = new CardDetails { CardNumber = "222222222222222222", Cvv = "222" }
+            };
             var result = await service.ProcessTransactionAsync(transaction);
 
             // Assert
@@ -83,7 +87,11 @@ namespace Cko.PaymentGateway.Core.Tests.Services
 
             // Act
             var service = GetService();
-            var transaction = new Transaction();
+            var transaction = new Transaction
+            {
+                From = new CardDetails { CardNumber = "1111111111111111", Cvv = "111" },
+                To = new CardDetails { CardNumber = "222222222222222222", Cvv = "222" }
+            };
             var result = await service.ProcessTransactionAsync(transaction);
 
             // Assert
@@ -117,7 +125,11 @@ namespace Cko.PaymentGateway.Core.Tests.Services
 
             // Act
             var service = GetService();
-            var transaction = new Transaction();
+            var transaction = new Transaction
+            {
+                From = new CardDetails { CardNumber = "1111111111111111", Cvv = "111" },
+                To = new CardDetails { CardNumber = "222222222222222222", Cvv = "222" }
+            };
             var result = await service.ProcessTransactionAsync(transaction);
 
             // Assert

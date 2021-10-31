@@ -38,21 +38,27 @@ namespace Cko.PaymentGateway.Core.Services
 
             await _transactionRepository.StoreTransactionAsync(result);
 
+            MaskResult(result);
             return result;
         }
 
         public async Task<PaymentGatewayTransactionResult> RetrieveTransactionAsync(string transactionId)
         {
             var result = await _transactionRepository.GetTransactionAsync(transactionId);
+            MaskResult(result);
+
+            return result;
+        }
+
+        private void MaskResult(PaymentGatewayTransactionResult result)
+        {
             if (result != null)
             {
                 result.OriginalTransaction.From.CardNumber = result.OriginalTransaction.From.CardNumber.ReplaceWithStars(4);
-                result.OriginalTransaction.From.Cvv=result.OriginalTransaction.From.Cvv.ReplaceWithStars(0);
+                result.OriginalTransaction.From.Cvv = result.OriginalTransaction.From.Cvv.ReplaceWithStars(0);
                 result.OriginalTransaction.To.CardNumber = result.OriginalTransaction.To.CardNumber.ReplaceWithStars(4);
                 result.OriginalTransaction.To.Cvv = result.OriginalTransaction.To.Cvv.ReplaceWithStars(0);
             }
-
-            return result;
         }
     }
 }
