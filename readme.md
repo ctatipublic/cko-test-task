@@ -127,6 +127,26 @@ Note that even if the original transaction failed, a record of with including th
 
 If the transactionId provided does not exist, you will get a `404 Not Found` response.
 
+## Running the project locally
+### Environment Variables
+In order to run the project locally we need to set a couple of environment variables in `Cko.PaymentGateway/Properties/launchSettings.json`
+
+```
+"BANK_API_URL": "http://localhost:5001",
+"USE_LOCAL_STORAGE": "true",
+```
+
+`BANK_API_URL` tells the PaymentGateway where the BankSimulator API lives.
+
+`USE_LOCAL_STORAGE` indicates that we want to use the very simplistic local implementation of `IDocumentPersistance`. If that environment variable is not set to true, the API will try to connect to a `DynamoDB` table called `CkoTransactions` using the standard AWS environment variables as below:
+```
+"AWS_ACCESS_KEY_ID": "xxx",
+"AWS_SECRET_ACCESS_KEY": "xxx",
+"AWS_REGION": "xxx"
+``` 
+
+
+
 ## Project Structure ##
 Each main project (`Cko.BankSimulator` and `Cko.PaymentGateway`) contain references a `.Core` and a `.Infrastructure` projects.
 
