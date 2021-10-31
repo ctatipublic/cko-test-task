@@ -15,7 +15,7 @@ namespace Cko.PaymentGateway.Core.Repositories
         }
         public async Task<PaymentGatewayTransactionResult> GetTransactionAsync(string transactionId)
         {
-            return await _persistance.RetrieveDocumentByKeyAsync(transactionId);
+            return await _persistance.RetrieveDocumentByKeyAsync("transactionId", transactionId);
         }
 
         public async Task StoreTransactionAsync(PaymentGatewayTransactionResult transaction)

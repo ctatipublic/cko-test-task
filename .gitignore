@@ -6,3 +6,4 @@ packaged
 
 launchSettings*.json
 readme.md.backup
+src/Cko.PaymentGateway/CkoTransactionsStore.json

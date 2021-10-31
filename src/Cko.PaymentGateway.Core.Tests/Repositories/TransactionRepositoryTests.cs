@@ -22,7 +22,7 @@ namespace Cko.PaymentGateway.Core.Tests.Repositories
             var retrievedTransaction = new PaymentGatewayTransactionResult();
             SetupDefaultMocks();
             _persistanceMock.Setup(m =>
-                m.RetrieveDocumentByKeyAsync(transactionId))
+                m.RetrieveDocumentByKeyAsync("transactionId", transactionId))
             .ReturnsAsync(retrievedTransaction);
 
             // Act
@@ -30,7 +30,7 @@ namespace Cko.PaymentGateway.Core.Tests.Repositories
             var result = await repository.GetTransactionAsync(transactionId);
 
             // Assert
-            _persistanceMock.Verify(m => m.RetrieveDocumentByKeyAsync(transactionId), Times.Once);
+            _persistanceMock.Verify(m => m.RetrieveDocumentByKeyAsync("transactionId", transactionId), Times.Once);
             Assert.Equal(retrievedTransaction.GetHashCode(), result.GetHashCode());
         }
 

@@ -6,6 +6,7 @@ using Cko.PaymentGateway.DynamoDbPersistance;
 using Cko.PaymentGateway.Infrastructure.Interfaces.Gateways;
 using Cko.PaymentGateway.Infrastructure.Interfaces.Repository;
 using Cko.PaymentGateway.Infrastructure.Interfaces.Services;
+using Cko.PaymentGateway.LocalJsonPersistance;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -25,7 +26,14 @@ namespace Cko.PaymentGateway.Core
             services.AddScoped<IBankApiGateway, BankSimulatorBankApiGateway>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
             services.AddScoped<ITransactionService, TransactionService>();
-            services.AddDynamoDbDocumentPersistance();
+            if (appSettingsService.UseLocalStorage)
+            {
+                services.AddLocalJsonDocumentPersistance();
+            }
+            else
+            {
+                services.AddDynamoDbDocumentPersistance();
+            }
             services.AddCommonCore();
             return services;
         }

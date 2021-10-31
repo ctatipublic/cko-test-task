@@ -3,5 +3,6 @@
     public interface IAppSettingsService
     {
         public string BankApiUrl { get; }
+        bool UseLocalStorage { get; }
     }
 }

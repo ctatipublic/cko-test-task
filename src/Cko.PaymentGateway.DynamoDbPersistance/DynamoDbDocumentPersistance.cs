@@ -19,10 +19,10 @@ namespace Cko.PaymentGateway.DynamoDbPersistance
             _dynamoDbSettings = dynamoDbSettings;
         }
 
-        public async Task<T> RetrieveDocumentByKeyAsync(string key)
+        public async Task<T> RetrieveDocumentByKeyAsync(string keyField, string keyValue)
         {
             var table = Table.LoadTable(_client, _dynamoDbSettings.TableName);
-            var doc = await table.GetItemAsync(key);
+            var doc = await table.GetItemAsync(keyValue);
             if (doc == null) { return null; }
             return JsonSerializer.Deserialize<T>(doc.ToJson(), Constants.JsonSerializerOptions);
         }
